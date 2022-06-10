@@ -87,12 +87,14 @@ export default class TransactionScreen extends Component {
   };
 
   getBookDetails = bookId => {
+    alert("Getting book name");
     bookId = bookId.trim();
     db.collection("Books")
       .where("book_id", "==", bookId)
       .get()
       .then(snapshot => {
         snapshot.docs.map(doc => {
+          alert("book name : " + doc.data().book_details.book_name )
           this.setState({
             bookName: doc.data().book_details.book_name
           });
@@ -101,12 +103,14 @@ export default class TransactionScreen extends Component {
   };
 
   getStudentDetails = studentId => {
+    alert("Getting student name");
     studentId = studentId.trim();
     db.collection("Students")
       .where("student_id", "==", studentId)
       .get()
       .then(snapshot => {
         snapshot.docs.map(doc => {
+          alert("student name : " + doc.data().student_details.student_name )
           this.setState({
             studentName: doc.data().student_details.student_name
           });
